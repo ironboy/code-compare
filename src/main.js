@@ -118,6 +118,7 @@ async function start() {
   addChooser(1);
   addChooser(0);
   addCompareChooser();
+  fixForHTMLHighlitingInJSCode();
 }
 
 function addChooser(chosen) {
@@ -249,6 +250,30 @@ function hackMultiExample() {
 
   y1el.hide();
   y2el.hide();
+}
+
+function fixForHTMLHighlitingInJSCode(){
+  let snippet = `  <img style="margin-top:15px" src="\${health_icon_image}">
+  <h3>BMI-kalkylatorn</h3>
+  <label>Din längd i cm:
+    <input class="cm" type="number">
+  </label>
+  <label>Din vikt i kg:
+    <input class="kg" type="number">
+  </label>
+  <button class="calculate">
+    Räkna ut din BMI</button>
+  <h4 class="result"></h4>
+  <h4 class="assess"></h4>`;
+  snippet = $(highlite(snippet, 'html')).html();
+  let a = $('li:contains("${health_icon")');
+  a.before(snippet);
+  while (a) {
+    let next = a.next();
+    a.remove();
+    a = next;
+    if (a.html().includes('assess')) { a.remove();  a = null;  }
+  }
 }
 
 
