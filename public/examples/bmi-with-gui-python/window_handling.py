@@ -20,7 +20,8 @@ def create_window(tk, title, size_y_percent, size_x_percent):
 # Start the main window loop
 def start_window_loop(window) :
   try:
-    # make text less blurry on windows
+    # try to make text less blurry on windows
+    # by setting dpi awareness
     from ctypes import windll
     windll.shcore.SetProcessDpiAwareness(1)
   except: pass 
