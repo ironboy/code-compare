@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Inconsolata:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: rgb(50, 51, 52);
+  color: #eee;
+  margin: 20px;
+  font-family: 'Open Sans';
+}
+
+ol {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+ol {
+  font-family: 'Inconsolata' !important;
+}
+
+code {
+  white-space: pre-wrap;
+}
+
+code ol {
+  counter-reset: item;
+  list-style-type: none;
+  background-color: black;
+  padding-left: 50px;
+}
+
+
+code li {
+  display: flex;
+  min-height: 20px;
+  position: relative;
+}
+
+code li:before {
+  display: block;
+  position: absolute;
+  left: -40px;
+  width: 20px;
+  content: counter(item) "  ";
+  counter-increment: item;
+  color: #bbb;
+}
+
+code li div {
+  text-indent: -18px;
+  padding-left: 10px;
+}
+
+code li:nth-child(-n+9):before {
+  left: -31px;
+}
+
+.cspaces {
+  display: inline-block;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+h3 {
+  margin: 0;
+}
+
+.example,
+.chooser {
+  float: left;
+  margin-left: 30px;
+  max-width: 100%;
+  width: calc(50% - 40px);
+}
+
+.example {
+  display: none;
+  margin-bottom: 20px;
+}
+
+.example ol {
+  width: 100%;
+}
+
+.chooser {
+  padding-bottom: 20px;
+}
+
+select {
+  font-weight: bold;
+  font-family: 'Open Sans';
+  border: 1px solid #999;
+  background-color: #32bea6;
+  opacity: 0.8;
+  width: 100%;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.meta {
+  background-color: gold;
+}
+
+.info {
+  position: relative;
+}
+
+.bytes {
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+
+.example:nth-child(3) {
+  border-right: 1px dashed #999;
+  padding-right: 30px;
+  margin-left: 25px;
+}
+
+.chooser:nth-child(1) {
+  margin-left: 25px;
+  padding-right: 30px;
+  border-right: 1px dashed #999;
+}
+
+.holder {
+  margin: 20px 25px;
+}
+
+.holder select,
+.holder .desc {
+  display: block;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.holder .desc {
+  padding-bottom: 20px;
+}
+
+.holder .desc, .explain {
+  font-family: 'Source Serif Pro';
+  font-size: 18px;
+}
+
+h1 {
+  font-family: 'Bungee Spice';
+  text-align: center;
+  font-size: 35px;
+}
+
+.holder li {
+  margin-top: 6px;
+}
+
+.play-holder {
+  position: relative;
+}
+
+.play {
+  width: 32px;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Open Sans'
+}
+
+.line {
+  height: 20px;
+  border-top: 1px solid #999;
+}
+
+.headit {
+  background-color: rgb(70, 103, 169);
+  background: linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.7)), url('/code-bg.jpg');
+  background-size: cover;
+  color: white;
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 40px;
+  border: 10px solid black;
+}
+
+.img-link {
+  display: block;
+  text-align: center;
+  background: white;
+  padding: 20px 0;
+  border-radius: 10px;
+}
