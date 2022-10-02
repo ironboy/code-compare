@@ -27,7 +27,7 @@ let meta = {
   'JavaScript vs. Python - BMI-calc, console app (long/OOP)': [
     'BMI-calc, JavaScript, long/OOP, console app',
     'BMI-calc, Python, long/OOP, console app',
-    '**JavaScript** (1994) och **Python** (1991) är båda löst typade språk som kan skrivas klassbaserat, om man vill. Här gör vi det, fast det blir något längre kod än om vi skulle strunta i klasserna.\n\n**Notera:**\n* I **JavaScript** använder vi *this.methodName* för att referera till metoder i klassen. I **Python** använder vi istället *self.methodName*.\n* I **Python** måste vi låta alla metoder i klassen ta emot *self* som ett argument, men utelämnar detta argument när vi anropar dem.\n* Konstruktorn i en klass heter *constructor* i **JavaScript** och *__init__* i **Python**\n* I **Python** skriver vi *inte* **new** framför klassnamnet när vi skapar en ny instans av klassen.\n\nMedan **JavaScript** har en grundsyntax med curly-brackets/måsvingar för programblock, semi-kolon för radavslut (optional/om man vill) osv. som liknar **Java** och **C#**, väljer **Python** att istället använda indrag för att skilja programblock åt.'
+    '**JavaScript** (1994) och **Python** (1991) är båda löst typade språk som kan skrivas klassbaserat, om man vill. Här gör vi det, fast det blir något längre kod än om vi skulle strunta i klasserna.\n\n**Notera:**\n* I **JavaScript** använder vi *this.methodName* för att referera till metoder i klassen. I **Python** använder vi istället *self.methodName*.\n* I **Python** måste vi låta alla metoder i klassen ta emot *self* som ett argument, men utelämnar detta argument när vi anropar dem.\n* Konstruktorn i en klass heter *constructor* i **JavaScript** och <span class="init-in-py">*__init__*</span> i **Python**\n* I **Python** skriver vi *inte* **new** framför klassnamnet när vi skapar en ny instans av klassen.\n\nMedan **JavaScript** har en grundsyntax med curly-brackets/måsvingar för programblock, semi-kolon för radavslut (optional/om man vill) osv. som liknar **Java** och **C#**, väljer **Python** att istället använda indrag för att skilja programblock åt.'
   ],
   'JavaScript vs. Python - BMI-calc, console app (short)': [
     'BMI-calc, JavaScript, short, console app',
@@ -182,6 +182,7 @@ function addCompareChooser() {
     $('.chooser select').first().val(choice1).trigger('change');
     $('.chooser select').last().val(choice2).trigger('change');
     $('.holder .desc').html(marked.parse(desc));
+    $('.init-in-py em').html('__init__');
     doNotResetMeta = false;
   });
   select.trigger('change');
