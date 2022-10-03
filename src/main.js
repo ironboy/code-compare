@@ -13,32 +13,38 @@ window.Prism.manual = true;
 
 let doNotResetMeta;
 
-let meta = {
-  'Java vs. C# - BMI-calc, console app': [
-    'BMI-calc, Java, console app',
-    'BMI-calc, C#, console app',
-    `**Java** (1994) och **C#** (2000) är i grunden mycket snarlika. De är båda hårt typade kompilerade språk och har klassbaserad OOP som gemensam utgångspunkt.\n\nMicrosoft designade **C#** som ett direkt svar på, och för att konkurrera med, **Java**. Då de hade något att jämföra med blev vissa saker lite bättre/mindre verbosa.\n\n*Notera:* I **C#** inleder man, till skillnad från i **Java**, namn på metoder med stor bokstav.\n\n*De här språken ger en säker, men lite stel, kostym för hur man bör koda.* 👔`
-  ],
-  'Java vs. JavaScript - BMI-calc, console app': [
-    'BMI-calc, Java, console app',
-    'BMI-calc, JavaScript, long/OOP, console app',
-    '**Java** (Sun, 1994) och **JavaScript** (Netscape, 1994) är ganska olika språk - trots det gemensamma "*Java*" i namnet som kommer från att *Sun* och *Netscape* hade ett affärssamarbete och tänkte att det skulle vara smart att marknadsföra **JavaScript** som lillebror till **Java**.\n\n**JavaScript** är ett löst typat språk och hade ursprungligen ingen klassyntax.\n\nSedan länge (2015) finns dock klasser på plats i språket och vill man kan man skriva det väldigt traditionellt och Java-likt, minus datatypsdeklarationer, vilket vi har gjort här.\n\n*Notera*: I JavaScript heter konstruktorn alltid *constructor* oavsett klassnamn och **this** är obligatoriskt för att nå klassmedlemmar (fält och metoder). ☕'
-  ],
-  'JavaScript vs. Python - BMI-calc, console app (long/OOP)': [
-    'BMI-calc, JavaScript, long/OOP, console app',
-    'BMI-calc, Python, long/OOP, console app',
-    '**JavaScript** (1994) och **Python** (1991) är båda löst typade språk som kan skrivas klassbaserat, om man vill. Här gör vi det, fast det blir något längre kod än om vi skulle strunta i klasserna.\n\nMedan **JavaScript** har en grundsyntax med curly-brackets/måsvingar för programblock, semi-kolon för radavslut (optional/om man vill) osv. som liknar **Java** och **C#**, väljer **Python** att istället använda indrag för att skilja programblock åt.\n\n**Notera:**\n* I **JavaScript** använder vi *this.methodName* för att referera till metoder i klassen. I **Python** använder vi istället *self.methodName*.\n* I **Python** måste vi låta alla metoder i klassen ta emot *self* som ett argument, men utelämnar detta argument när vi anropar dem.\n* Konstruktorn i en klass heter *constructor* i **JavaScript** och <span class="init-in-py">*__init__*</span> i **Python**\n* I **Python** skriver vi *inte* **new** framför klassnamnet när vi skapar en ny instans av klassen.\n* I **Python** föredrar man snake-casing, dvs. underscores, för att skilja ord i variabel-, metod- och funktionsnamn åt. I många andra språk(som **Java**, **C#** och **JavaScript**) är *camelCasing* standard. 🐫'
-  ],
-  'JavaScript vs. Python - BMI-calc, console app (short)': [
-    'BMI-calc, JavaScript, short, console app',
-    'BMI-calc, Python, short, console app',
-    '**JavaScript** (1994) och **Python** (1991) är båda löst typade språk och har gemensamt att de är lätt att "leka" med datatyper i dem, och de kräver minimial syntax för att skapa listor, hashmaps etc.\n\nMedan **JavaScript** har en grundsyntax med curly-brackets/måsvingar för programblock, semi-kolon för radavslut osv. som liknar **Java** och **C#**, väljer **Python** att istället använda indrag för att skilja programblock åt.\n\nSpråken kan båda användas såväl med som utan klasser - här ett exempel utan klasser i bägge språken, vilket ger kortare och mer kompakt kod.\n\n(**Python** har på gott och ont lite större behov av typomvandlingar än JavaScript.)\n\n*Ingen finkostym behövs, fullt ös!* 🎉'
-  ],
-  'JavaScript vs. Python - BMI-calc med GUI/grafiskt gränssnitt': [
-    'BMI-calc, JavaScript, GUI',
-    'BMI-calc, Python, GUI',
-    '**JavaScript** är ursprungligen designat för att köra i webbläsare och komplettera **HTML** (ett märkspråk för innehåll) och **CSS** (ett regelbaserat språk för styling av element på webbsidor). Således är det naturligt att grafiska gränssnitt för JavaScript-program skapas med **HTML** och **CSS**.\n\n**Python** har **TKinter** som sitt standardverktyg för grafiska gränssnitt. Det är ett bibliotek byggt ovanpå **TK** (ett open-source plattformsoberoende verktyg) som är **widget**-baserat, dvs. det finns olika slags grafiska element (*widgets*) - som *labels/text*, *input-fält* m.m. att välja mellan för att bygga sitt GUI.\n\nDetta gör att angreppssättet för att bygga grafiska gränssnitt är ganska olika mellan språken. Trots det går det att skapa ett exempel, som det här, där koden är jämförbar i struktur och längd.\n\n*4 kilobyte kod x 2 borde vara nog för alla?* 😛'
-  ]
+let meta, exp;
+async function addExplanationsToMeta() {
+  let x = await $.get('/explanations.md');
+  exp = x.split(/\n# \d+\n/);
+  exp.shift();
+  meta = {
+    'Java vs. C# - BMI-calc, console app': [
+      'BMI-calc, Java, console app',
+      'BMI-calc, C#, console app',
+      exp[0]
+    ],
+    'Java vs. JavaScript - BMI-calc, console app': [
+      'BMI-calc, Java, console app',
+      'BMI-calc, JavaScript, long/OOP, console app',
+      exp[1]
+    ],
+    'JavaScript vs. Python - BMI-calc, console app (long/OOP)': [
+      'BMI-calc, JavaScript, long/OOP, console app',
+      'BMI-calc, Python, long/OOP, console app',
+      exp[2]
+    ],
+    'JavaScript vs. Python - BMI-calc, console app (short)': [
+      'BMI-calc, JavaScript, short, console app',
+      'BMI-calc, Python, short, console app',
+      exp[3]
+    ],
+    'JavaScript vs. Python - BMI-calc, GUI (Graphical User Interface)': [
+      'BMI-calc, JavaScript, GUI',
+      'BMI-calc, Python, GUI',
+      exp[4]
+    ]
+  };
 }
 
 let codeExamples = {
@@ -90,6 +96,7 @@ let highlite = (code, lang) => {
 }
 
 async function start() {
+  await addExplanationsToMeta();
   $('body').append('<div class="holder"></div><div class="examples">');
   for (let [key, val] of Object.entries(codeExamples)) {
     let lang = val.split('.').pop();
@@ -215,10 +222,6 @@ function hackMultiExample() {
 
   let y1el = $('[data-name="BMI-calc, Python, GUI"]');
   let y2el = $('[data-name="BMI-calc, JavaScript, GUI"]');
-  y1el.show();
-  y2el.show();
-  let y1 = y1el.find('h3').last().offset().top;
-  let y2 = y2el.find('h3').last().offset().top;
 
   y2el.prepend('<h2>BMI-calc, JavaScript, GUI</h2>');
   y2el.find('h3').first().append(', app.js: Huvudprogram');
@@ -226,8 +229,7 @@ function hackMultiExample() {
   y1el.find('h3').first().append(', main.py: Huvudprogram');
   y1el.find('h3').add(y2el.find('h3')).each(function () {
     $(this).html($(this).html().split(', ').pop());
-  })
-  let diff = y2 - y1 - 10;
+  });
 
   let fixer = x => +$(x).html().split('&nbsp;').join('').split(':').pop();
   let tLinesPy = [...y1el.find('.lines')].map(fixer).reduce((a, b) => a + b);
@@ -240,16 +242,27 @@ function hackMultiExample() {
   y2el.find('h2').after(`<p class="info"><span class="lines">Lines of code: ${tLinesJs}</span><span class="bytes">Bytes: ${tBytesJs}</span></p><div class="line"></div>`);
 
   $('[data-name="BMI-calc, Python, GUI"]').find('h3').last().before(
-    /*html*/`<div class="explain" style="height:${diff}px">
-      ${marked.parse('*Pythons* **window handling** är aningen längre än *JavaScripts*, då *Python* behöver en funktion för att starta en s.k. *Tkinter event loop* och visa fönstret. Här är koden dessutom versionerad beroende på operativsystem. Å andra sidan behöver **Python** ingen *html*-fil för att starta upp, vilket **JavaScript** i en webbläsare allltid behöver.')}
+    /*html*/`<div class="explain">
+      ${marked.parse(exp[5])}
     </div>`
   );
 
   y1el.append('<br><h3>Resultat</h3><br><a class="img-link" target="_blank" href="https://replit.com/@ThomasFrank4/Python-BMI-calc-GUI#main.py"><img src="/bmi-gui-python.jpg" style="width:40vw;display:inline-block"></a>');
   y2el.append('<br><h3>Resultat</h3><br><a class="img-link" target="_blank" href="https://replit.com/@ThomasFrank4/BMI-calc-JavaScript-GUI#index.html"><img src="/bmi-gui-js.jpg" style="width:40vw;display:inline-block"></a>');
 
-  y1el.hide();
-  y2el.hide();
+  let h3_1 = y1el.find('h3:contains("style.py")');
+  let h3_2 = y2el.find('h3:contains("style.css")');
+  let spacer = $('<div class="style-list-spacer-py"></div>');
+  h3_1.before(spacer);
+  setInterval(() => {
+    let diff = h3_2.offset().top - h3_1.offset().top;
+    if (!diff) { return; }
+    spacer.css({ height: 0, marginTop: 0 });
+    diff = h3_2.offset().top - h3_1.offset().top;
+    diff > 0 && spacer.css({ height: diff });
+    diff < 0 && spacer.css({ marginTop: diff });
+  }, 1000);
+
 }
 
 function fixForHTMLHighlitingInJSCode(){
