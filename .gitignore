@@ -103,3 +103,9 @@ dist
 # TernJS port file
 .tern-port
 public/.DS_Store
+public/examples/c-sharp/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+public/examples/c-sharp/obj/Debug/net6.0/app.AssemblyInfo.cs
+public/examples/c-sharp/obj/Debug/net6.0/app.AssemblyInfoInputs.cache
+public/examples/c-sharp/obj/Debug/net6.0/app.GeneratedMSBuildEditorConfig.editorconfig
+public/examples/c-sharp/obj/Debug/net6.0/app.GlobalUsings.g.cs
+public/examples/c-sharp/obj/Debug/net6.0/app.csproj.AssemblyReference.cache
