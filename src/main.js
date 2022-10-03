@@ -227,7 +227,7 @@ function hackMultiExample() {
   y1el.find('h3').add(y2el.find('h3')).each(function () {
     $(this).html($(this).html().split(', ').pop());
   })
-  let diff = y2 - y1 - 18;
+  let diff = y2 - y1 - 10;
 
   let fixer = x => +$(x).html().split('&nbsp;').join('').split(':').pop();
   let tLinesPy = [...y1el.find('.lines')].map(fixer).reduce((a, b) => a + b);
