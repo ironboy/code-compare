@@ -107,6 +107,11 @@ select {
   width: 100%;
   padding: 5px 20px;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+select:hover {
+  border: 1px solid #fff;
 }
 
 .meta {
