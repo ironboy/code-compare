@@ -10,10 +10,10 @@ public class Main {
   }
 
   public String assessBMI(double bmi){
-    return "Du är " + (
-      bmi > 30.0 ? "fet" :
-      bmi > 25.0 ? "överviktig" :
-      bmi >= 18.5 ? "normalviktig" : "underviktig"
+    return "You are " + (
+      bmi > 30.0 ? "big and beautiful" :
+      bmi > 25.0 ? "solidly build" :
+      bmi >= 18.5 ? "of medium weight" : "easily carried"
     ) + ".";
   }
 
@@ -27,21 +27,21 @@ public class Main {
 
   public double[] getInput(){
     System.out.println("\n".repeat(60));
-    System.out.println("BMI-kalkylatorn Java");
+    System.out.println("BMI Calculator Java");
     System.out.println("---------------------");
-    double cm = inputPosNumber("Ange din längd i cm:");
-    double kg = inputPosNumber("Ange din vikt i kg:");
+    double cm = inputPosNumber("Your length in centimeters:");
+    double kg = inputPosNumber("Your weight in kilograms:");
     return new double[]{cm, kg};
   }
 
   public Main() {
     double[] input = getInput();
     double bmi = calculateBMI(input[0], input[1]);
-    System.out.println("Din BMI är " + bmi);
+    System.out.println("\nYour BMI is " + bmi);
     System.out.println(assessBMI(bmi));
-    System.out.println("\nIgen? (j/n)");
+    System.out.println("\nAgain? (y/n)");
     String answer = in.nextLine();
-    if(answer.matches("(?i)^j.*")){
+    if(answer.matches("(?i)^y.*")){
       new Main();
     }
   }

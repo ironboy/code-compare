@@ -75,7 +75,7 @@ let go = (() => {
     'https://replit.com/@ThomasFrank4/Java-BMI-calc#Main.java',
     'https://replit.com/@ThomasFrank4/C-BMI-calc#main.cs',
     'https://replit.com/@ThomasFrank4/JS-BMI-calc-longOOP#index.js',
-    'hhttps://replit.com/@ThomasFrank4/JS-BMI-calc-longOOP-no-semis#index.js',
+    'https://replit.com/@ThomasFrank4/JS-BMI-calc-longOOP-no-semis#index.js',
     'https://replit.com/@ThomasFrank4/Python-BMI-calc-longOOP#main.py',
     'https://replit.com/@ThomasFrank4/JS-BMI-calc-short#index.js',
     'https://replit.com/@ThomasFrank4/JS-BMI-calc-short-no-semis#index.js',

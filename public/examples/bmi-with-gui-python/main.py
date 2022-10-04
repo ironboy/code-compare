@@ -10,10 +10,10 @@ calculate_BMI = lambda lengthInCm, weigthInKg:\
   round(weigthInKg / ((lengthInCm / 100) ** 2), 1)
 
 # Function for assessing BMI (as a lambda)
-assess_BMI = lambda bmi: 'Du är ' + (
-  'fet' if bmi > 30.0 else
-  'överviktig' if bmi > 25.0 else
-  'normalviktig' if bmi >= 18.5 else 'underviktig'
+assess_BMI = lambda bmi: 'You are ' + (
+  'big and beautiful' if bmi > 30.0 else
+  'solidly build' if bmi > 25.0 else
+  'of medium weight' if bmi >= 18.5 else 'easily carried'
 ) + '.'
 
 # Function to run when clicking the calculate button:
@@ -25,24 +25,24 @@ def calculate() :
       float(widgets['cm'].get()),
       float(widgets['kg'].get())
     )
-  except: result = 'svår att räkna ut.'
-  widgets['result'].config(text = 'Din BMI är ' + str(result))
+  except: result = 'hard to calculate.'
+  widgets['result'].config(text = 'Your BMI is ' + str(result))
   widgets['assessment'].config(text = '' 
-    if 'svår' in str(result) else assess_BMI(result))
+    if 'hard' in str(result) else assess_BMI(result))
 
 # Create GUI: Create a window + add styling + define widgets
-win = create_window(tk, 'BMI-kalkylatorn (Python)', 75, 30)
+win = create_window(tk, 'BMI Calculator (Python)', 75, 30)
 setStyle(win)
 health_icon_image = tk.PhotoImage(file = 'health-icon.png')
 widgets = {
   'space': Label(win, text = ''),
   'healthIcon': Label(win, image = health_icon_image),
-  'headline': Label(win, text = 'BMI-kalkylatorn', style = 'Heading.TLabel'),
-  'length-label': Label(win, text = 'Din längd i cm:'),
+  'headline': Label(win, text = 'BMI Calculator', style = 'Heading.TLabel'),
+  'length-label': Label(win, text = 'Your length in centimeters:'),
   'cm': Entry(win, width = 5),
-  'weigth-label': Label(win, text='Din vikt i kg:'),
+  'weigth-label': Label(win, text='Your weight in kilograms:'),
   'kg': Entry(win, width = 5),
-  'calculate': Button(win, text = 'Räkna ut din BMI', command = calculate),
+  'calculate': Button(win, text = 'Calculate your BMI', command = calculate),
   'result': Label(win, style = 'Result.TLabel'),
   'assessment': Label(win, style = 'Result.TLabel')
 }

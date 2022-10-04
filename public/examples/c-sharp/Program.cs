@@ -10,10 +10,10 @@
     }
 
     public String AssessBMI(double bmi) {
-      return "Du är " + (
-        bmi > 30.0 ? "fet" :
-        bmi > 25.0 ? "överviktig" :
-        bmi >= 18.5 ? "normalviktig" : "underviktig"
+      return "You are " + (
+        bmi > 30.0 ? "big and beautiful" :
+        bmi > 25.0 ? "solidly build" :
+        bmi >= 18.5 ? "of medium weight" : "easily carried"
       ) + ".";
     }
 
@@ -27,21 +27,21 @@
 
     public double[] GetInput() {
       Console.Clear();
-      Console.WriteLine("BMI-kalkylatorn C#");
+      Console.WriteLine("BMI Calculator C#");
       Console.WriteLine("---------------------");
-      double cm = InputPosNumber("Ange din längd i cm:");
-      double kg = InputPosNumber("Ange din vikt i kg:");
+      double cm = InputPosNumber("Your length in centimeters:");
+      double kg = InputPosNumber("Your weight in kilograms:");
       return new double[] { cm, kg };
     }
 
     public Program() {
       double[] input = GetInput();
       double bmi = CalculateBMI(input[0], input[1]);
-      Console.WriteLine("Din BMI är " + bmi);
+      Console.WriteLine("\nYour BMI is " + bmi);
       Console.WriteLine(AssessBMI(bmi));
-      Console.WriteLine("\nIgen? (j/n)");
+      Console.WriteLine("\nAgain? (y/n)");
       string answer = Console.ReadLine();
-      if (answer != null && answer.ToLower()[0].Equals('j')) {
+      if (answer != null && answer.ToLower()[0].Equals('y')) {
         new Program();
       }
     }

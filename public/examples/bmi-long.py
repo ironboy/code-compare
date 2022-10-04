@@ -11,11 +11,11 @@ class Main:
     1)
 
   def assess_BMI(self, bmi): 
-    return 'Du är ' + (
-      'fet' if bmi > 30.0 else
-      'överviktig' if bmi > 25.0 else
-      'normalviktig' if bmi >= 18.5 else 
-      'underviktig'
+    return 'You are ' + (
+      'big and beautiful' if bmi > 30.0 else
+      'solidly build' if bmi > 25.0 else
+      'of medium weight' if bmi >= 18.5 else 
+      'easily carried'
     ) + '.'
 
   def input_pos_number(self, question):
@@ -29,20 +29,20 @@ class Main:
   def get_input(self):
     system('cls' if os_name == 'nt'\
       else 'clear')
-    print('BMI-kalkylatorn Python (long)')
+    print('BMI Calculator Python (long)')
     print('-----------------------------')
-    cm = self.input_pos_number('Ange din längd i cm: ')
-    kg = self.input_pos_number('Ange din vikt i kg: ')
+    cm = self.input_pos_number('Your length in centimeters: ')
+    kg = self.input_pos_number('Your weight in kilograms: ')
     return [cm, kg]
 
   def __init__(self):
     answers = self.get_input()
     bmi = self.calculate_BMI(*answers)
-    print('\nDin BMI är ' + str(bmi))
+    print('\nYour BMI is ' + str(bmi))
     assessment = self.assess_BMI(bmi)
     print(assessment)
-    answer = input('\nIgen? (j/n) ')
-    regex = r'(?i)^j'
+    answer = input('\nAgain? (y/n) ')
+    regex = r'(?i)^y'
     if re.match(regex, answer):
       Main()
 

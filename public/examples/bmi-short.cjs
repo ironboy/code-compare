@@ -4,10 +4,10 @@ const prompt = require('prompt-sync')({ sigint: true });
 let calculateBMI = (lengthInCm, weigthInKg) =>
   +(weigthInKg / ((lengthInCm / 100) ** 2)).toFixed(1);
 
-let assessBMI = bmi => 'Du är ' + (
-  bmi > 30.0 ? 'fet' :
-  bmi > 25.0 ? 'överviktig' :
-  bmi >= 18.5 ? 'normalviktig' : 'underviktig'
+let assessBMI = bmi => 'You are ' + (
+  bmi > 30.0 ? 'big and beautiful' :
+  bmi > 25.0 ? 'solidly build' :
+  bmi >= 18.5 ? 'of medium weight' : 'easily carried'
 ) + '.';
 
 let inputPosNumber = (question,
@@ -17,16 +17,16 @@ let inputPosNumber = (question,
 
 let getInput = () => {
   console.clear();
-  console.log('BMI-kalkylatorn JS (short)\n' + '-'.repeat(30));
+  console.log('BMI Calculator JS (short)\n' + '-'.repeat(30));
   return [
-    'Ange din längd i cm: ', 'Ange din vikt i kg: '
+    'Your length in centimeters: ', 'Your weight in kilograms: '
   ].map(x => inputPosNumber(x));
 }
 
 let main = () => {
   let bmi = calculateBMI(...getInput());
-  console.log(`\nDin BMI är ${bmi}\n${assessBMI(bmi)}\n`);
-  if ((/^j/i).test(prompt('Igen? (j/n) '))) { main(); }
+  console.log(`\nYour BMI is ${bmi}\n${assessBMI(bmi)}\n`);
+  if ((/^y/i).test(prompt('Again? (y/n) '))) { main(); }
 }
 
 main();

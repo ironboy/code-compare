@@ -10,10 +10,10 @@ class Main {
   }
 
   assessBMI(bmi) {
-    return 'Du är ' + (
-      bmi > 30.0 ? 'fet' :
-      bmi > 25.0 ? 'överviktig' :
-      bmi >= 18.5 ? 'normalviktig' : 'underviktig'
+    return 'You are ' + (
+      bmi > 30.0 ? 'big and beautiful' :
+      bmi > 25.0 ? 'solidly build' :
+      bmi >= 18.5 ? 'of medium weight' : 'easily carried'
     ) + '.';
   }
 
@@ -27,20 +27,20 @@ class Main {
 
   getInput() {
     console.clear();
-    console.log('BMI-kalkylatorn JS (long)');
+    console.log('BMI Calculator JS (long)');
     console.log('-------------------------');
-    let cm = this.inputPosNumber('Ange din längd i cm: ');
-    let kg = this.inputPosNumber('Ange din vikt i kg: ');
+    let cm = this.inputPosNumber('Your length in centimeters: ');
+    let kg = this.inputPosNumber('Your weight in kilograms: ');
     return [cm, kg];
   }
 
   constructor() {
     let input = this.getInput();
     let bmi = this.calculateBMI(...input);
-    console.log('\nDin BMI är ' + bmi);
+    console.log('\nYour BMI is ' + bmi);
     console.log(this.assessBMI(bmi));
-    let answer = prompt('\nIgen? (j/n) ');
-    if ((/^j/i).test(answer)) {
+    let answer = prompt('\nAgain? (y/n) ');
+    if ((/^y/i).test(answer)) {
       new Main();
     }
   }
