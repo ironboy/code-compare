@@ -11,6 +11,15 @@ import $ from 'jquery';
 window.Prism = window.Prism || {};
 window.Prism.manual = true;
 
+let getCache = {};
+
+let get = async url => {
+  if (getCache[url]) { return getCache[url]; }
+  let got = await $.get({ url, dataType: 'text' });
+  getCache[url] = got;
+  return got;
+}
+
 let go = (() => {
 
   let language = localStorage.comparisonsLanguage || 'sv';
@@ -18,7 +27,9 @@ let go = (() => {
 
   let meta, exp;
   async function addExplanationsToMeta() {
-    let x = await $.get(`/explanations-${language}.md`);
+    await get('/explanations-sv.md');
+    await get('/explanations-en.md');
+    let x = await get(`/explanations-${language}.md`);
     exp = x.split(/\n# \d+\n/);
     exp.shift();
     document.title = exp[10];
@@ -121,7 +132,7 @@ let go = (() => {
     $('body').append('<div class="holder"></div><div class="examples">');
     for (let [key, val] of Object.entries(codeExamples)) {
       let lang = val.split('.').pop();
-      let code = await $.get({ url: val, dataType: 'text' });
+      let code = await get(val);
       codeExamples[key] = { code };
       let bytes = new Intl.NumberFormat('sv-SE').format(code.length)
       codeExamples[key].html = /*html*/`
