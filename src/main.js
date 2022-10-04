@@ -11,13 +11,15 @@ import $ from 'jquery';
 window.Prism = window.Prism || {};
 window.Prism.manual = true;
 
+let language = localStorage.comparisonsLanguage || 'sv';
 let doNotResetMeta;
 
 let meta, exp;
 async function addExplanationsToMeta() {
-  let x = await $.get('/explanations.md');
+  let x = await $.get(`/explanations-${language}.md`);
   exp = x.split(/\n# \d+\n/);
   exp.shift();
+  document.title = exp[10];
   meta = {
     'Java vs. C# - BMI-calc, console app': [
       'BMI-calc, Java, console app',
@@ -88,7 +90,23 @@ let playCodeExamples = [
 let highlite = (code, lang) => {
   lang = lang === 'cs' ? 'csharp' : lang;
   lang = lang === 'cjs' ? 'js' : lang;
-  let c = Prism.highlight(code, Prism.languages[lang], lang);
+  if (lang === 'js') {
+    // html highlite inside template literals in js if /*html*/ or html before them
+    code = code.replace(/(html\S*`)([^`]*)/, '$1__html_template__$2__html_template__');
+    code = code.split('__html_template__');
+  }
+  else {
+    code = [code];
+  }
+  let c = '';
+  // highlite using Prism
+  let counter = 0;
+  for (let x of code) {
+    let lange = counter % 2 == 0 ? lang : 'html';
+    c += Prism.highlight(x, Prism.languages[lange], lange);
+    counter++;
+  }
+  // fix for line numbers
   if (c.split('\n').length > 2) {
     c = '<ol><li><div>' + c.replace(/\n */g, x => `</div></li><li style="padding-left:${x.slice(1).length * 9}px"><div><span class="cspaces">${x.slice(1) || ' '}</span>`) + '</div></li></ol>';
   }
@@ -125,7 +143,6 @@ async function start() {
   addChooser(1);
   addChooser(0);
   addCompareChooser();
-  fixForHTMLHighlitingInJSCode();
 }
 
 function addChooser(chosen) {
@@ -157,25 +174,34 @@ function addChooser(chosen) {
         $(this).prop('disabled', $(this).text() === values[1]);
       });
     }
-    !doNotResetMeta && $('.meta').val('Välj jämförelse').trigger('change');
+    !doNotResetMeta && $('.meta').val(exp[11]).trigger('change');
   });
   chooser.find('select').trigger('change');
 }
 
 function addCompareChooser() {
   let select = '<select class="meta">';
-  select += '<option>Välj jämförelse</option>';
-  let first = true;
+  select += `<option>${exp[11]}</option>`;
+  let selectedComparison = localStorage.selectedComparison || Object.keys(meta)[0];
   for (let key in meta) {
-    select += `<option ${first ? ' selected' : ''}>${key}</option>`
-    first = false;
+    select += `<option ${selectedComparison === key ? ' selected' : ''}>${key}</option>`
   }
   select += '</select>';
   select = $(select);
   $('.holder').append('<div class="headit"></div>');
-  $('.holder .headit').append('<h1>ironboys språkjämförelser</h1 > ');
-  $('.holder .headit').append('<div class="explain intro"><i>Denna utgåva: En BMI-kalkylator i Java, C#, JavaScript och Python...</i></div>');
-  $('.holder .headit').append('<div class="intro">Klicka på Play-knapparna för att köra ett stycke kod!</div>');
+  $('.holder .headit').append(`<h1>${exp[6]}</h1>`);
+  $('.holder .headit').append(`<div class="explain intro"><i>${exp[7]}</i></div>`);
+  $('.holder .headit').append(`<div class="intro">${exp[8]}</div>`);
+  $('.holder .headit').append(/*html*/`
+    <div class="language-switch">
+      <img width="30" src="/us-icon.png">
+      <label class="form-switch">
+        <input type="checkbox">
+        <i></i>
+      </label>
+        <img width="30" src="/sv-icon.png">
+    </div>
+  `);
   $('.holder').append(select);
   $('.holder').append('<div class="desc"></div>');
   select.on('change', () => {
@@ -185,6 +211,7 @@ function addCompareChooser() {
       return;
     }
     let [choice1, choice2, desc] = selected;
+    localStorage.selectedComparison = select.val();
     doNotResetMeta = true;
     $('option').each(function () { $(this).prop('disabled', false) });
     $('.chooser select').first().val(choice1).trigger('change');
@@ -194,6 +221,13 @@ function addCompareChooser() {
     doNotResetMeta = false;
   });
   select.trigger('change');
+  let cbox = $('.language-switch [type="checkbox"]');
+  cbox.prop('checked', localStorage.comparisonsLanguage === 'sv');
+  cbox.on('change', function () {
+    let c = $(this).prop('checked');
+    localStorage.comparisonsLanguage = c ? 'sv' : 'en';
+    setTimeout(() => location.reload(),250);
+  });
 }
 
 function hackMultiExample() {
@@ -247,15 +281,17 @@ function hackMultiExample() {
     </div>`
   );
 
-  y1el.append('<br><h3>Resultat</h3><br><a class="img-link" target="_blank" href="https://replit.com/@ThomasFrank4/Python-BMI-calc-GUI#main.py"><img src="/bmi-gui-python.jpg" style="width:40vw;display:inline-block"></a>');
-  y2el.append('<br><h3>Resultat</h3><br><a class="img-link" target="_blank" href="https://replit.com/@ThomasFrank4/BMI-calc-JavaScript-GUI#index.html"><img src="/bmi-gui-js.jpg" style="width:40vw;display:inline-block"></a>');
+  y1el.append('<br><h3>' + exp[9] + '</h3><br><a class="img-link" target="_blank" href="https://replit.com/@ThomasFrank4/Python-BMI-calc-GUI#main.py"><img src="/bmi-gui-python.jpg" style="width:40vw;display:inline-block"></a>');
+  y2el.append('<br><h3>' + exp[9] + '</h3><br><a class="img-link" target="_blank" href="https://replit.com/@ThomasFrank4/BMI-calc-JavaScript-GUI#index.html"><img src="/bmi-gui-js.jpg" style="width:40vw;display:inline-block"></a>');
 
   let h3_1 = y1el.find('h3:contains("style.py")');
   let h3_2 = y2el.find('h3:contains("style.css")');
   let spacer = $('<div class="style-list-spacer-py"></div>');
   h3_1.before(spacer);
   setInterval(() => {
-    let diff = h3_2.offset().top - h3_1.offset().top;
+    let [one, two] = [h3_2.offset().top, h3_1.offset().top];
+    let diff = one - two;
+    (!one || !two) && (diff = 0);
     if (!diff) { return; }
     spacer.css({ height: 0, marginTop: 0 });
     diff = h3_2.offset().top - h3_1.offset().top;
@@ -264,30 +300,5 @@ function hackMultiExample() {
   }, 1000);
 
 }
-
-function fixForHTMLHighlitingInJSCode(){
-  let snippet = `  <img style="margin-top:15px" src="\${health_icon_image}">
-  <h3>BMI-kalkylatorn</h3>
-  <label>Din längd i cm:
-    <input class="cm" type="number">
-  </label>
-  <label>Din vikt i kg:
-    <input class="kg" type="number">
-  </label>
-  <button class="calculate">
-    Räkna ut din BMI</button>
-  <h4 class="result"></h4>
-  <h4 class="assess"></h4>`;
-  snippet = $(highlite(snippet, 'html')).html();
-  let a = $('li:contains("${health_icon")');
-  a.before(snippet);
-  while (a) {
-    let next = a.next();
-    a.remove();
-    a = next;
-    if (a.html().includes('assess')) { a.remove();  a = null;  }
-  }
-}
-
 
 start();

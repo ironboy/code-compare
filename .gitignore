@@ -109,3 +109,4 @@ public/examples/c-sharp/obj/Debug/net6.0/app.AssemblyInfoInputs.cache
 public/examples/c-sharp/obj/Debug/net6.0/app.GeneratedMSBuildEditorConfig.editorconfig
 public/examples/c-sharp/obj/Debug/net6.0/app.GlobalUsings.g.cs
 public/examples/c-sharp/obj/Debug/net6.0/app.csproj.AssemblyReference.cache
+.DS_Store
