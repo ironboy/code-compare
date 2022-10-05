@@ -9,7 +9,7 @@ function main(print = console.log) {
   print(list.map((x, i) => (i + 1) + '. ' + x).join('\n'));
   print('\nAdd an item to the list ' +
     '\n(or write a number to remove an item from the list)');
-  input = prompt();
+  let input = prompt();
   isNaN(input) ? list.push(input)
     : +input >= 1 && list.splice(input - 1, 1);
   main();
