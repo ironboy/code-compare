@@ -22,7 +22,7 @@ let get = async url => {
 
 let go = (() => {
 
-  let language = localStorage.comparisonsLanguage || 'sv';
+  let language = localStorage.comparisonsLanguage || 'en';
   let doNotResetMeta;
 
   let meta, exp;
