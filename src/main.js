@@ -146,6 +146,7 @@ let go = (() => {
 
   async function start() {
     await addExplanationsToMeta();
+    exp[11] = exp[11].trim();
     $('body').empty();
     $('body').append('<div class="holder"></div><div class="examples">');
     for (let [key, val] of Object.entries(codeExamples)) {
