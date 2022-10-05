@@ -12,7 +12,7 @@ public class Program {
   public String AssessBMI(double bmi) {
     return "You are " + (
       bmi > 30.0 ? "big and beautiful" :
-      bmi > 25.0 ? "solidly build" :
+      bmi > 25.0 ? "solidly built" :
       bmi >= 18.5 ? "of medium weight" : "easily carried"
     ) + ".";
   }

@@ -13,7 +13,7 @@ class Main:
   def assess_BMI(self, bmi): 
     return 'You are ' + (
       'big and beautiful' if bmi > 30.0 else
-      'solidly build' if bmi > 25.0 else
+      'solidly built' if bmi > 25.0 else
       'of medium weight' if bmi >= 18.5 else 
       'easily carried'
     ) + '.'

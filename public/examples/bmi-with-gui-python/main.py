@@ -12,7 +12,7 @@ calculate_BMI = lambda lengthInCm, weigthInKg:\
 # Function for assessing BMI (as a lambda)
 assess_BMI = lambda bmi: 'You are ' + (
   'big and beautiful' if bmi > 30.0 else
-  'solidly build' if bmi > 25.0 else
+  'solidly built' if bmi > 25.0 else
   'of medium weight' if bmi >= 18.5 else 'easily carried'
 ) + '.'
 
