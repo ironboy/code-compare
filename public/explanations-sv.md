@@ -89,6 +89,7 @@ I **JavaScript** använder vi oss av en *array* och i **Python** av en *List*. N
 Kodstrukturen i de både exemplen är mycket snarlik.
 
 **Notera**:
-* Båda språken kan omvandla listan till en output med numrererade rader med en snabb "oneliner" (rad 9). Dock med helt olika syntax.
-* JavaScript har *isNaN*-metoden ("is not a number") som kollar om en sträng *inte kan* omvandlas till nummer. Python har *isNumeric*-metoden som kollar om en sträng *kan* omvandlas till ett nummer. 
-* Vi måste använda ett index som finns i listan i Python, annars hade vi fått ett programkörningsfel. I JavaScript är inte detta nödvändigt, men vi ser till att undvika minusindex. (Negativa index är tillåtna i båda språken, men används för att ta bort saker räknat från slutet av en lista, vilket vi inte vill tillåta i detta program.)
+* Båda språken kan visa listan som numrererade rader med en snabb "oneliner" (rad 9). Dock med helt olika syntax.
+* **JavaScrip** har *isNaN*-metoden ("is not a number") som kollar om en sträng *inte kan* omvandlas till nummer. **Python** har *isNumeric*-metoden som kollar om en sträng *kan* omvandlas till ett nummer. 
+* **JavaScript** har ett mycket bekvämt sätt att omvandla en numerisk sträng till ett tal. Man skriver bara + framför strängen. I **Python** använder vi istället *int()*-metoden.
+* När vi tar bort en sak måste vi användaa ett index som finns i listan i **Python**, annars hade vi fått ett programkörningsfel. I **JavaScript** är inte detta nödvändigt, men vi ser till att undvika minusindex. (Negativa index är tillåtna i båda språken, men används för att ta bort saker räknat från slutet av en lista, vilket vi inte vill tillåta i detta program.)

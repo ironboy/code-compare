@@ -4,7 +4,7 @@ let list = [];
 
 function main(print = console.log) {
   console.clear();
-  print('\n'.repeat(60) + 'TO DO LIST (JS)\n' + '-'.repeat(52));
+  print('TO DO LIST (JS)\n' + '-'.repeat(52));
   print(list.length == 0 ? 'The list is empty.' : '');
   print(list.map((x, i) => (i + 1) + '. ' + x).join('\n'));
   print('\nAdd an item to the list ' +

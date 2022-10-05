@@ -7,7 +7,7 @@ public class Main {
 
   public static void main(String... args) {
     System.out.println("\n".repeat(60));
-    System.out.println("TO DO LIST\n" + "-".repeat(52));
+    System.out.println("TO DO LIST (Java)\n" + "-".repeat(52));
     System.out.println(list.size() == 0 ? "The list is empty." : "");
     int counter = 0;
     for(String item : list){

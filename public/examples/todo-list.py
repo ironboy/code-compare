@@ -4,7 +4,7 @@ list = []
 
 def main():
   system('cls' if os_name == 'nt' else 'clear')
-  print('\n' * 60 + 'TO DO LIST (Python)\n' + '-' * 50)
+  print('TO DO LIST (Python)\n' + '-' * 50)
   print('The list is empty' if len(list) == 0 else '')
   for a, b in enumerate(list, 1): print (str(a) + '. ' + b)
   print('\nAdd an item to the list ' +

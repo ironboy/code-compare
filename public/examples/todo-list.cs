@@ -7,7 +7,7 @@ public class Program {
 
   static void Main (params string [] args) {
     Console.Clear();
-    Console.WriteLine("TO DO LIST\n" + new String('-', 52));
+    Console.WriteLine("TO DO LIST (C#)\n" + new String('-', 52));
     Console.WriteLine(list.Count == 0 ? "The list is empty." : "");
     int counter = 0;
     foreach(String item in list) {

@@ -97,10 +97,10 @@ let go = (() => {
   let originalCodeExamples = Object.assign({}, codeExamples);
 
   let playCodeExamples = [
-    '',
-    '',
-    '',
-    '',
+    'https://replit.com/@ThomasFrank4/To-Do-list-console-app-Java#Main.java',
+    'https://replit.com/@ThomasFrank4/To-Do-list-console-app-C#Main.cs',
+    'https://replit.com/@ThomasFrank4/To-Do-list-console-app-JS#index.js',
+    'https://replit.com/@ThomasFrank4/To-Do-list-console-app-Python#main.py',
     'https://replit.com/@ThomasFrank4/Java-BMI-calc#Main.java',
     'https://replit.com/@ThomasFrank4/C-BMI-calc#main.cs',
     'https://replit.com/@ThomasFrank4/JS-BMI-calc-longOOP#index.js',

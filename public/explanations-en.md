@@ -89,6 +89,7 @@ In **JavaScript** we use an *array* and in **Python** a *List*. New arrays/lists
 The code structure in both examples is very similar.
 
 **Note**:
-* Both languages can turn the list into a numbered line output with a quick "oneliner" (line 9). However with completely different syntax.
-* JavaScript has the *isNaN* method ("is not a number") which checks if a string *can not* be converted to a number. Python has the *isNumeric* method which checks if a string *can* be converted to a number.
-* We must use an index that exists in the list in Python, otherwise we would get a runtime exception. In JavaScript this is not necessary, but we make sure to avoid negative indexes. (Negative indexes are allowed in both languages, but are used to remove items counted from the end of the list which is not something we want to allow in this program.)
+* Both languages can show the list as numbered line output using a quick and convenient "oneliner" (line 9). However with completely different syntax.
+* **JavaScript** has the *isNaN* method ("is not a number") which checks if a string *can not* be converted to a number. **Python** has the *isNumeric* method which checks if a string *can* be converted to a number.
+* **JavaScript** has a very convenient way of converting a numeric string to a number. You just write + in front of the string. In **Python**, we use the *int()* method instead.
+* When removing an item we must use an index that exists in the list in **Python**, otherwise we would get a runtime exception. In **JavaScript** this is not necessary, but we make sure to avoid negative indexes. (Negative indexes are allowed in both languages, but are used to remove items counted from the end of the list which is not something we want to allow in this program.)
