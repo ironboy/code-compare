@@ -20,7 +20,7 @@ class Main:
 
   def input_pos_number(self, question):
     answer = input(question)
-    if re.match(r'\d+\.{0,1}\d*', answer)\
+    if re.match(r'\d+\.{0,1}\d*$', answer)\
       and float(answer) > 0:
       return float(answer)
     else:

@@ -12,7 +12,7 @@ assess_BMI = lambda bmi: 'You are ' + (
 
 def input_pos_number(question):
   answer = input(question)
-  return float(answer) if re.match(r'\d+\.*{0,1}\d*', answer)\
+  return float(answer) if re.match(r'\d+\.{0,1}\d*$', answer)\
     and float(answer) > 0 else input_pos_number(question)
 
 def get_input():
