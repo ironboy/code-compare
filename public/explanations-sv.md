@@ -56,7 +56,7 @@ Detta gör att angreppssättet för att bygga grafiska gränssnitt är ganska ol
 ironboys språkjämförelser
 
 # 7
-Denna utgåva: En BMI-kalkylator i Java, C#, JavaScript och Python...
+Denna utgåva: En BMI-kalkylator och en Att göra-lista i Java, C#, JavaScript och Python...
 
 # 8
 Klicka på en Play-knapp för att köra ett stycke kod!
@@ -69,3 +69,26 @@ Ironboys språkjämförelser: BMI-kalkylatorn
 
 # 11
 Välj jämförelse
+
+# 12
+Här har vi en mycket enkel Att göra-lista, där man endast kan lägga till eller ta bort saker.
+
+I **Java** använder vi oss av en *ArrayList* och i **C#** av en *List*.
+
+Kodstrukturen i de både exemplen är mycket snarlik. 
+
+Smärre skillnader kan dock ses i konverteringen av sträng till heltal, där C# har den behändiga *TryParse*-metoden. I Java använder vi oss istället vi oss av en enkel *regex* för att kontrollera om strängen bara innehåller siffror.
+
+I båda språken måste vi se till att vi använder ett index som finns i listan när vi tar bort något ur en lista. Annars hade vi fått ett programkörningsfel.
+
+# 13
+Här har vi en mycket enkel Att göra-lista där man endast kan lägga till eller ta bort olika saker.
+
+I **JavaScript** använder vi oss av en *array* och i **Python** av en *List*. Nya arrayer/listor skapas i båda språken genom att bara skriva **[]**. De är dynamiska, dvs. man kan lägga till och ta bort saker ur dem.
+
+Kodstrukturen i de både exemplen är mycket snarlik.
+
+**Notera**:
+* Båda språken kan omvandla listan till en output med numrererade rader med en snabb "oneliner" (rad 9). Dock med helt olika syntax.
+* JavaScript har *isNaN*-metoden ("is not a number") som kollar om en sträng *inte kan* omvandlas till nummer. Python har *isNumeric*-metoden som kollar om en sträng *kan* omvandlas till ett nummer. 
+* Vi måste använda ett index som finns i listan i Python, annars hade vi fått ett programkörningsfel. I JavaScript är inte detta nödvändigt, men vi ser till att undvika minusindex. (Negativa index är tillåtna i båda språken, men används för att ta bort saker räknat från slutet av en lista, vilket vi inte vill tillåta i detta program.)

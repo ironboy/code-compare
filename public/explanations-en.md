@@ -56,7 +56,7 @@ This means that the approach to building graphical interfaces is quite different
 ironboy's language comparisons
 
 # 7
-This edition: A BMI calculator in Java, C#, JavaScript and Python...
+This edition: A BMI Calculator & A To Do List in Java, C#, JavaScript and Python...
 
 # 8
 Click a Play button to run a piece of code!
@@ -69,3 +69,26 @@ Ironboy's Language Comparisons: The BMI Calculator
 
 # 11
 Choose comparison
+
+# 12
+Here we have a very simple To Do list, where you can only add or remove items.
+
+In **Java** we use an **ArrayLiset** and in **C#** a **List**.
+
+The code structure is very similar in both languages. 
+
+However a minor difference can be seen in the string to integer conversion, where C# has the handy *TryParse* method. In Java, we use a simple *regex* instead, to check if the string only contains numbers.
+
+In both languages we need to make sure we use an index that exists in the list when we remove something from a list. Otherwise we would get a runtime exception.
+
+# 13
+Here we have a very simple To Do list, where you can only add or remove items.
+
+In **JavaScript** we use an *array* and in **Python** a *List*. New arrays/lists are created in both languages by just typing **[]**. They are dynamic, ie. you can add and remove things from them.
+
+The code structure in both examples is very similar.
+
+**Note**:
+* Both languages can turn the list into a numbered line output with a quick "oneliner" (line 9). However with completely different syntax.
+* JavaScript has the *isNaN* method ("is not a number") which checks if a string *can not* be converted to a number. Python has the *isNumeric* method which checks if a string *can* be converted to a number.
+* We must use an index that exists in the list in Python, otherwise we would get a runtime exception. In JavaScript this is not necessary, but we make sure to avoid negative indexes. (Negative indexes are allowed in both languages, but are used to remove items counted from the end of the list which is not something we want to allow in this program.)

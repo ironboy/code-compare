@@ -58,11 +58,25 @@ let go = (() => {
         'BMI-calc, JavaScript, GUI',
         'BMI-calc, Python, GUI',
         exp[4]
-      ]
+      ],
+      'Java vs. C# - To Do List, console app': [
+        'To Do List, Java, console app',
+        'To Do List, C#, console app',
+        exp[12]
+      ],
+      'JavaScript vs. Python - To Do List, console app': [
+        'To Do List, JavaScript, console app',
+        'To Do List, Python, console app',
+        exp[13]
+      ],
     };
   }
 
   let codeExamples = {
+    'To Do List, Java, console app': '/examples/todo-list.java',
+    'To Do List, C#, console app': '/examples/todo-list.cs',
+    'To Do List, JavaScript, console app': '/examples/todo-list.cjs',
+    'To Do List, Python, console app': '/examples/todo-list.py',
     'BMI-calc, Java, console app': '/examples/Main.java',
     'BMI-calc, C#, console app': '/examples/c-sharp/Program.cs',
     'BMI-calc, JavaScript, long/OOP, console app': '/examples/bmi-long.cjs',
@@ -77,12 +91,16 @@ let go = (() => {
     'BMI-calc, JavaScript, GUI, style.css': '/examples/bmi-with-gui-js/style.css',
     'BMI-calc, Python, GUI': '/examples/bmi-with-gui-python/main.py',
     'BMI-calc, Python, GUI, window_handling.py': '/examples/bmi-with-gui-python/window_handling.py',
-    'BMI-calc, Python, GUI, style.py': '/examples/bmi-with-gui-python/style.py',
+    'BMI-calc, Python, GUI, style.py': '/examples/bmi-with-gui-python/style.py'
   }
 
   let originalCodeExamples = Object.assign({}, codeExamples);
 
   let playCodeExamples = [
+    '',
+    '',
+    '',
+    '',
     'https://replit.com/@ThomasFrank4/Java-BMI-calc#Main.java',
     'https://replit.com/@ThomasFrank4/C-BMI-calc#main.cs',
     'https://replit.com/@ThomasFrank4/JS-BMI-calc-longOOP#index.js',
@@ -154,16 +172,26 @@ let go = (() => {
       open(link, "");
     });
     hackMultiExample();
+    // add choosers
     addChooser(1);
     addChooser(0);
     addCompareChooser();
   }
 
   function addChooser(chosen) {
+    // reorder ToDo examples
+    let codeExs = Object.assign({}, codeExamples);
+    for (let key in codeExs) {
+      if (key.includes('To Do')) {
+        let val = codeExs[key];
+        delete codeExs[key];
+        codeExs[key] = val;
+      }
+    }
     let chooser = $(`
     <div class="chooser">
       <select>
-      ${Object.keys(codeExamples).map((x, i) => `<option ${i == chosen ? ' selected' : ''}>${x}</option>`).join('')}
+      ${Object.keys(codeExs).map((x, i) => `<option ${i == chosen ? ' selected' : ''}>${x}</option>`).join('')}
       </select>
     </div>
   `);
