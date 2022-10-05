@@ -268,8 +268,7 @@ let go = (() => {
     cbox.on('change', function () {
       let c = $(this).prop('checked');
       localStorage.comparisonsLanguage = c ? 'sv' : 'en';
-      go();
-      // setTimeout(() => location.reload(), 1);
+      setTimeout(() => go(), c ? 0 : 250);
     });
   }
 
