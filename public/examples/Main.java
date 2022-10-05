@@ -20,7 +20,7 @@ public class Main {
   public double inputPosNumber(String question){
     System.out.println(question);
     String a = in.nextLine();
-    double answer = a.matches("\\d+\\.*\\d*")
+    double answer = a.matches("\\d+\\.{0,1}\\d*")
       ? Double.parseDouble(a) : 0;
     return answer > 0 ? answer : inputPosNumber(question);
   }
